@@ -20,6 +20,15 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+
+		sqldb, err := config.GormDB().DB()
+		if err != nil {
+			panic(err)
+		}
+		err = sqldb.Close()
+		if err != nil {
+			panic(err)
+		}
 	}()
 
 	workDir, err := os.Getwd()
