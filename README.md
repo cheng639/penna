@@ -29,14 +29,20 @@
 ```
 - 使用git克隆本项目
     - ```git
-        git clone xxxx.
+        git clone https://github.com/cheng639/penna.git
         go mod tidy
       ```
 - golang版本 >= v1.24
 - IDE推荐：Goland
-- 初始化项目： 配置文件中添加数据库， Redis连接参数,否则项目无法启动
+
+- 初始化项目： /cmd/config.yaml配置文件中添加mysql数据库， Redis连接参数,否则项目无法启动
+
 -编译运行，请将编译后的可执行文件输出到cmd目录，或将config.yaml移动到可执行文件所在目录，如果是Goland编辑器，可以在运行-编辑配置修改
 输出目录和工作目录
+  cd cmd
+  go build -o penna.exe main.go
+  ./penna.exe
+  
 --依赖管理，本项目使用go mod vendor管理依赖项，运行go mod vendor命令可将依赖文件添加/更新到/vendor目录，这样可以在内网/无网络环境
 下编译代码，如果您用不到，可以忽略此项，按默认的go mod方式使用即可，Goland会自动处理依赖项
 ```
