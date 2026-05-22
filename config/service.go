@@ -29,6 +29,7 @@ type Server struct {
 	Host string `json:"host" yaml:"host"`
 	IP   string `json:"ip" yaml:"ip"`
 	Port string `json:"port" yaml:"port"`
+	Node int64  `json:"node" yaml:"node"`
 }
 
 func ParseConfig(path string) *viper.Viper {

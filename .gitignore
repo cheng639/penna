@@ -1,2 +1,4 @@
-/cmd/go_build_gin_g_cmd.exe
+/cmd/*.exe
+/cmd/penna.exe
 /cmd/app.log
+/.idea

@@ -3,8 +3,8 @@ package common
 import (
 	"errors"
 	"fmt"
-	"gin-g/config"
 	"log"
+	"penna/config"
 	"runtime"
 )
 

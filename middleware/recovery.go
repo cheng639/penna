@@ -3,9 +3,11 @@ package middleware
 import (
 	"errors"
 	"fmt"
-	"gin-g/config"
 	"github.com/gin-gonic/gin"
 	"log"
+	"net/http"
+	"penna/config"
+	"penna/model/response"
 	"runtime"
 )
 
@@ -33,6 +35,11 @@ func RecoveryMiddleware() gin.HandlerFunc {
 					Err(errors.New(fmt.Sprintf("%v", err))).
 					Str("stack", string(buf[:n])).
 					Msg("panic recovered")
+
+				c.JSON(http.StatusInternalServerError, response.Response{
+					Code: response.ERROR,
+					Msg:  fmt.Sprintf("%v", err),
+				})
 			}
 		}()
 

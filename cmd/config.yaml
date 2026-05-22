@@ -5,6 +5,7 @@ server:
   host: http://localhost
   ip: 127.0.0.1
   port: 8090
+  node: 0
 
 logger:
   level: info
@@ -24,8 +25,8 @@ redis:
   database: 0
 
 mysql:
-  maxidleconns: 5
-  maxopenconns: 76
+  maxidleconns: 3
+  maxopenconns: 32
   name: test
   user: root
   password: root

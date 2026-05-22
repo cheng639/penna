@@ -1,4 +1,4 @@
 set CGO_ENABLED=0
 set GOOS=linux
 set GOARCH=amd64
-go build -ldflags "-w -s" -o gin-g main.go
+go build -ldflags "-w -s" -o penna main.go

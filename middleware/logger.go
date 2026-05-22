@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"gin-g/config"
 	"github.com/gin-gonic/gin"
+	"penna/config"
 	"time"
 )
 

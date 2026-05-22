@@ -3,14 +3,17 @@ package main
 import (
 	"errors"
 	"fmt"
-	"gin-g/common"
-	"gin-g/config"
-	"gin-g/middleware"
-	"gin-g/router"
 	"github.com/danielkov/gin-helmet/ginhelmet"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
+	"github.com/go-playground/validator/v10"
 	"os"
 	"path"
+	"penna/common"
+	"penna/config"
+	"penna/middleware"
+	"penna/model"
+	"penna/router"
 )
 
 func main() {
@@ -52,6 +55,10 @@ func main() {
 	apiV1 := engine.Group("/api/v1")
 	router.RegisterRouters(engine, apiV1.BasePath())
 
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
+		// 注册 model.LocalTime 类型的自定义校验规则
+		v.RegisterCustomTypeFunc(model.ValidateJSONDateType, model.LocalTime{})
+	}
 	config.Logger().Info().Msgf("%s is running on %s port.", config.Config().Server.Name, config.Config().Server.Port)
 	err = engine.Run(config.Config().Server.IP + ":" + config.Config().Server.Port) // listens on 127.0.0.1:8090 by default
 	if err != nil {
